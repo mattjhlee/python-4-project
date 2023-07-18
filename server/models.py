@@ -64,15 +64,16 @@ class Quiz(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String)
     category = db.Column(db.String)
-    created_by = db.Column(User)  #Can i have the value in the column be an object that I create? I can do validation with isInstance also i suppose?
+    created_by = db.Column(db.String)  #Can i have the value in the column be an object that I create? I can do validation with isInstance also i suppose?
     created_at = db.Column(db.DateTime(timezone=True), default= db.func.now())
     # time_updated = db.Column(db.DateTime(timezone=True), onupdate=db.func.now())
 
 #relationships
 
     results = db.relationship("Result" , backref = "quiz")
+    questions = db.relationship("Question" , backref = "quiz")
 
-    serialize_rules = ("-results.quiz",)
+    serialize_rules = ("-results.quiz",) #I killed it in the questions idt i need to kill it here as well.
 
 #validations
 #serializer Rules
