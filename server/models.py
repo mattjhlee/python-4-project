@@ -9,17 +9,17 @@ from config import db
 
 # Models go here!
 
-convention = {
-    "ix": "ix_%(column_0_label)s",
-    "uq": "uq_%(table_name)s_%(column_0_name)s",
-    "ck": "ck_%(table_name)s_%(constraint_name)s",
-    "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
-    "pk": "pk_%(table_name)s"
-}
+# convention = {
+#     "ix": "ix_%(column_0_label)s",
+#     "uq": "uq_%(table_name)s_%(column_0_name)s",
+#     "ck": "ck_%(table_name)s_%(constraint_name)s",
+#     "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
+#     "pk": "pk_%(table_name)s"
+# }
 
-metadata = MetaData(naming_convention=convention)
+# metadata = MetaData(naming_convention=convention)
 
-db = SQLAlchemy(metadata=metadata)
+# db = SQLAlchemy(metadata=metadata)
 
 class Question(db.Model, SerializerMixin):
     __tablename__ = 'Questions'
@@ -34,7 +34,7 @@ class Question(db.Model, SerializerMixin):
     category = db.Column(db.String)
 
     #foreignkeys
-    quiz_id = db.Column(db.Integer, db.Foreign_Key('Quizzes.id'))
+    quiz_id = db.Column(db.Integer, db.ForeignKey('Quizzes.id'))
 
     #relationship
     #quiz relationship added
@@ -64,7 +64,7 @@ class Quiz(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String)
     category = db.Column(db.String)
-    created_by = db.Column(User)  #Can i have the value in the column be an object that I create? I can do validation with isInstance also i suppose?
+    created_by = db.Column(db.String)  #Can i have the value in the column be an object that I create? I can do validation with isInstance also i suppose?
     created_at = db.Column(db.DateTime(timezone=True), default= db.func.now())
     # time_updated = db.Column(db.DateTime(timezone=True), onupdate=db.func.now())
 
@@ -114,8 +114,8 @@ class Results(db.Model, SerializerMixin):
     # relationships
     #Every result is created by a user and every result is for a specific quiz
 
-    user_id = db.Column(db.Integer, db.Foreign_Key('Users.id')) 
-    quiz_id = db.Column(db.Integer, db.Foreign_Key('Quizzes.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('Users.id')) 
+    quiz_id = db.Column(db.Integer, db.ForeignKey('Quizzes.id'))
 
     #serializer Rules
     serialize_rules = ('-user.results','-quiz.results')
