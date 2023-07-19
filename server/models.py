@@ -22,7 +22,7 @@ from config import db
 # db = SQLAlchemy(metadata=metadata)
 
 class Question(db.Model, SerializerMixin):
-    __tablename__ = 'Questions'
+    __tablename__ = 'questions'
     id = db.Column(db.Integer, primary_key = True)
     prompt = db.Column(db.String)
     correct_answer = db.Column(db.String)
@@ -61,7 +61,7 @@ class Question(db.Model, SerializerMixin):
 
 
 class Quiz(db.Model, SerializerMixin):
-    __tablename__ = 'Quizzes'
+    __tablename__ = 'quizzes'
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String)
     category = db.Column(db.String)
@@ -84,7 +84,7 @@ class Quiz(db.Model, SerializerMixin):
 
 
 class User(db.Model,SerializerMixin):
-    __tablename__ = 'Users'
+    __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String)
     #password if we get around to authentication 
@@ -107,7 +107,7 @@ class User(db.Model,SerializerMixin):
         return f'Username:{self.username}'
 
 class Result(db.Model, SerializerMixin):
-    __tablename__ = 'Results'
+    __tablename__ = 'results'
     id = db.Column(db.Integer, primary_key = True)
     score = db.Column(db.Float)
     created_at = db.Column(db.DateTime(timezone=True), default= db.func.now())
