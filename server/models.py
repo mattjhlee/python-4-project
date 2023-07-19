@@ -35,7 +35,7 @@ class Question(db.Model, SerializerMixin):
     category = db.Column(db.String)
 
     #foreignkeys
-    quiz_id = db.Column(db.Integer, db.ForeignKey('Quizzes.id'))
+    quiz_id = db.Column(db.Integer, db.ForeignKey('quizzes.id'))
 
     #relationship
     #quiz relationship added
@@ -115,8 +115,8 @@ class Result(db.Model, SerializerMixin):
     # relationships
     #Every result is created by a user and every result is for a specific quiz
 
-    user_id = db.Column(db.Integer, db.ForeignKey('Users.id')) 
-    quiz_id = db.Column(db.Integer, db.ForeignKey('Quizzes.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id')) 
+    quiz_id = db.Column(db.Integer, db.ForeignKey('quizzes.id'))
 
     #serializer Rules
     serialize_rules = ('-user.results','-quiz.results')
