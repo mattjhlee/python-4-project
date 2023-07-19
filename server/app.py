@@ -3,7 +3,7 @@
 # Standard library imports
 
 # Remote library imports
-from models import db, Question, Quiz, User, Results
+from models import db, Question, Quiz, User, Result
 from flask_restful import Api, Resource
 from flask_migrate import Migrate
 from flask import Flask, make_response, jsonify, request
@@ -32,13 +32,45 @@ api = Api(app)
 def home():
     return ''
 
-@app.route('/quizzes', methods = ['GET'])
+@app.route('/quizzes', methods = ['GET', 'POST'])
 def quizzes():
-    quizzes = Quiz.query.all()
-    quizzes_dict = [quiz.to_dict(rules = ('-results', )) for quiz in quizzes]
-    return make_response(quizzes_dict, 200)
+    if request.method == 'GET':
+        quizzes = Quiz.query.all()
+        quizzes_dict = [quiz.to_dict(rules = ('-results', )) for quiz in quizzes]
+        return make_response(quizzes_dict, 200)
+    
+    elif request.method == 'POST':
+        data = request.get_json()
 
-@app.route('/quizzes/<int:id>', methods = ['GET', 'POST', 'DELETE'])
+        try:
+
+            new_quiz = Quiz(
+                name = data['name'],
+                category = data['category'],
+                created_by = data['created_by'],
+                created_at = data['created_at']
+            )
+
+            db.session.add(new_quiz)
+
+            db.session.commit()
+
+            response = make_response(
+                jsonify(new_quiz.to_dict()),
+                201
+            )
+
+        except ValueError:
+
+            response = make_response(
+                { "errors": ["validation errors"] },
+                400
+            )
+
+        return response
+
+
+@app.route('/quizzes/<int:id>', methods = ['GET','DELETE'])
 def quiz_by_id(id):
     quiz = Quiz.query.filter(Quiz.id == id).first()
 
@@ -73,11 +105,76 @@ def questions():
     questions_dict = [question.to_dict(rules = ('-quiz', )) for question in questions]
     return make_response(questions_dict, 200)
 
+@app.route('/questions/<int:id>', methods = 'PATCH')
+def question_by_id(id):
+    question = Question.query.filter(Question.id == id).first()
+
+    if question:
+        data = request.get_json()
+
+        try:
+
+            for key in data:
+                setattr(question, key, data[key])
+
+            db.session.add(question)
+
+            db.session.commit()
+
+            response = make_response(
+                jsonify(question.to_dict(rules = ('-quiz', ))),
+                202
+                )
+
+        except ValueError:
+
+            response = make_response(
+                { "errors": ["validation errors"] },
+                400
+                )
+    return response
+
 @app.route('/users', methods = ['GET'])
 def users():
     users = User.query.all()
     users_dict = [user.to_dict(rules = ('-results', )) for user in users]
     return make_response(users_dict, 200)
+
+@app.route('/results', methods = ['GET', 'POST'])
+def results():
+    if request.method == 'GET':
+        results = Result.query.all()
+        results_dict = [result.to_dict() for result in results]
+        return make_response(results_dict, 200)
+    
+    elif request.method == 'POST':
+        data = request.get_json()
+
+        try:
+
+            new_result = Result(
+                score = data['score'],
+                created_at = data['created_at']
+            )
+
+            db.session.add(new_result)
+
+            db.session.commit()
+
+            response = make_response(
+                jsonify(new_result.to_dict()),
+                201
+            )
+
+        except ValueError:
+
+            response = make_response(
+                { "errors": ["validation errors"] },
+                400
+            )
+
+        return response
+    
 
 
 if __name__ == '__main__':

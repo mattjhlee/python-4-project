@@ -105,7 +105,7 @@ class User(db.Model,SerializerMixin):
     def __repr__(self):
         return f'Username:{self.username}'
 
-class Results(db.Model, SerializerMixin):
+class Result(db.Model, SerializerMixin):
     __tablename__ = 'Results'
     id = db.Column(db.Integer, primary_key = True)
     score = db.Column(db.Float)
