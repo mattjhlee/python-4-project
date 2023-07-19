@@ -30,7 +30,8 @@ class Question(db.Model, SerializerMixin):
     alt_2 = db.Column(db.String)
     alt_3 = db.Column(db.String)
     difficulty = db.Column(db.Integer) #validate this to be in a range
-    percentage_correct = db.Column(db.Float)
+    correct_count = db.Column(db.Integer)
+    answer_count = db.Column(db.Integer)
     category = db.Column(db.String)
 
     #foreignkeys
