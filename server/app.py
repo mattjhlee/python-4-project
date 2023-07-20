@@ -99,11 +99,48 @@ def quiz_by_id(id):
         
         return response
     
-@app.route('/questions', methods = ['GET'])
+@app.route('/questions', methods = ['GET', 'POST'])
 def questions():
-    questions = Question.query.all()
-    questions_dict = [question.to_dict(rules = ('-quiz', )) for question in questions]
-    return make_response(questions_dict, 200)
+    if request.method == 'GET':
+        questions = Question.query.all()
+        questions_dict = [question.to_dict(rules = ('-quiz', )) for question in questions]
+        return make_response(questions_dict, 200)
+    
+    elif request.method == 'POST':
+        data = request.get_json()
+
+        try:
+
+            new_question = Question(
+                prompt = data['prompt'],
+                correct_answer = data['correct_answer'],
+                alt_1 = data['alt_1'],
+                alt_2 = data['alt_2'],
+                alt_3 = data['alt_3'],
+                difficulty = data['difficulty'],
+                correct_count = data['correct_count'],
+                answer_count = data['answer_count'],
+                category = data['category'],
+                quiz_id = data['quiz_id']
+            )
+
+            db.session.add(new_question)
+
+            db.session.commit()
+
+            response = make_response(
+                jsonify(new_question.to_dict()),
+                201
+            )
+
+        except ValueError:
+
+            response = make_response(
+                { "errors": ["validation errors"] },
+                400
+            )
+
+        return response
 
 @app.route('/questions/<int:id>', methods = ['PATCH'])
 def question_by_id(id):
