@@ -7,7 +7,7 @@ import NavBar from "./NavBar";
 
 //import dependencies 
 
-function Quizes_landing_page(){
+function QuizPage(){
 
     //when you go to the quiz page it shows the nav bar on top
     //Some Text saying what it is and how to browse and what is popular
@@ -18,7 +18,7 @@ function Quizes_landing_page(){
     const[quizes,setQuizes] = useState([])
     //grab all the quizzes
     useEffect( () =>{
-        fetch("linktoquiztabledata")
+        fetch('http://localhost:5555/quizzes')
         .then((resp) => resp.json())
         .then(data => setQuizes(data))
     },[])
@@ -27,12 +27,17 @@ function Quizes_landing_page(){
     const [filterBy,setFilterBy] = useState("")
     
     //get the list of filtered quizzes
-    let filteredQuizList = quizes.filter((quiz) => {
-        return (quiz.category === filterBy)
-    })
+
+    // let filteredQuizList = quizes.filter((quiz) => {
+    //     return (quiz.category === filterBy)
+    // })
+
+
+    console.log(quizes)
 
     //function to display the filtered quizes
-    let displayQuiz = filteredQuizList.map( (quizToDisplay) => {
+
+    let displayQuiz = quizes.map( (quizToDisplay) => {
         return <QuizSelect key= {quizToDisplay.id}
         name = {quizToDisplay.name}
         difficulty = {quizToDisplay.difficulty}
@@ -46,6 +51,7 @@ function Quizes_landing_page(){
         <div>
             <NavBar />
             <h1>Testing Quiz Page</h1>
+            <p>{quizes}</p>
 
             <div className="categoryBrowse">
                 <h3> Browse by Category</h3>
@@ -65,7 +71,7 @@ function Quizes_landing_page(){
     )
 }
 
-export default Quizes_landing_page
+export default QuizPage
 
 
 {/* <div className="difficultyBrowse">

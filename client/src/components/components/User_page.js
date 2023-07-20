@@ -2,7 +2,7 @@ import React from "react";
 
 //import dependencies 
 
-function User_page(){
+function UserPage(){
 
     return(
         <div>
@@ -11,4 +11,4 @@ function User_page(){
     )
 }
 
-export default User_page
+export default UserPage

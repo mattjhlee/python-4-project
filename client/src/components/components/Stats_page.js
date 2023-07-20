@@ -2,7 +2,7 @@ import React from "react";
 
 //import dependencies 
 
-function Stats_Page(){
+function StatsPage(){
 
     return(
         <div>
@@ -11,4 +11,4 @@ function Stats_Page(){
     )
 }
 
-export default Stats_Page
+export default StatsPage

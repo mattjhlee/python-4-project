@@ -10,7 +10,7 @@ function Quiz({id}){
     const [questions,setQuestions] = useState([])
 
     useEffect( () => {
-        fetch("linktoquestions")
+        fetch('http://localhost:5555/questions')
         .then ((resp) => resp.json())
         .then ((data) =>setQuestions(data))
     },[])
@@ -18,7 +18,7 @@ function Quiz({id}){
     //find out which questions are associated with that quiz
 
     filteredQuestions = questions.filter((question) => {
-        return (question.quiz_id === id)}
+        return (question.difficulty === 2)}
     )
     
     //function to create each question block

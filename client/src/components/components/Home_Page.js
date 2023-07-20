@@ -5,7 +5,7 @@ import ContentCard from "./Content_Card"
 
 //import dependencies 
 
-function Home_Page({}){
+function HomePage(){
 
     return(
         <div>
@@ -21,4 +21,4 @@ function Home_Page({}){
     )
 }
 
-export default Home_Page
+export default HomePage
