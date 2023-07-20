@@ -9,12 +9,12 @@ function HomePage(){
 
     return(
         <div>
-            <h4>idt this is working</h4>
             <NavBar />
             <LoginSignup />
-            <h1>Welcome</h1>
+            <h1>Welcome to your new Study Helper (totally not a quizlet rippoff)</h1>
+            <h1> </h1>
             <ContentCard />
-            <ContentCard />
+
             
             {/* <Footer /> */}
         </div>

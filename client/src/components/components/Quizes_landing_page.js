@@ -55,13 +55,15 @@ function QuizPage(){
 
             <div className="categoryBrowse">
                 <h3> Browse by Category</h3>
-                <ul>Popular
-                    <li>Cat1</li>
-                    <li>Cat2</li>
+                <ul>
+                    <h4>Popular Quizes</h4>
+                    <li className="quiz-cat">Sports</li>
+                    <li className="quiz-cat">Programming</li>
                 </ul>
                 <SearchBar setFilter = {setFilterBy}/>
             </div>
-
+            
+            <h4>List of Available Quizes</h4>
             <div>
                 {displayQuiz}
             </div>

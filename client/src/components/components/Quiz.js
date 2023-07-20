@@ -10,7 +10,7 @@ function Quiz({id}){
     const [questions,setQuestions] = useState([])
 
     useEffect( () => {
-        fetch('http://localhost:5555/questions')
+        fetch('/questions')
         .then ((resp) => resp.json())
         .then ((data) =>setQuestions(data))
     },[])

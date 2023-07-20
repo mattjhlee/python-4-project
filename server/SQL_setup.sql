@@ -18,8 +18,10 @@ INSERT INTO Quizzes (id, name, category, created_by, created_at) VALUES (3, "PC 
 INSERT INTO Quizzes (id, name, category, created_by, created_at) VALUES (4, "Sports Quiz" , "sports",1,1);
 INSERT INTO Quizzes (id, name, category, created_by, created_at) VALUES (5, "Foodie Quiz" , "food",1,1);
 
+INSERT INTO Users (username) VALUES ('Default');
+INSERT INTO Users (username) VALUES ('Matthew');
+INSERT INTO Users (username) VALUES ('Shams');
 
 
 
-
-DELETE FROM QUESTIONS WHERE ID = 1
+DELETE FROM Users WHERE id =4;

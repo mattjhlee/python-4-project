@@ -3,6 +3,7 @@ import React from "react";
 function QuizSelect({name, difficulty,category}){
 
     //Start Quiz takes you do the quiz that is selected. 
+    //Once i click the StartQuiz button
    
     return(
     
