@@ -1,4 +1,7 @@
 import React from "react";
+import NavBar from "./NavBar";
+import LoginSignup from "./LoginSignup"
+import ContentCard from "./Content_Card"
 
 //import dependencies 
 
@@ -6,7 +9,12 @@ function Home_Page(){
 
     return(
         <div>
-            <h1>Testing</h1>
+            <NavBar />
+            <LoginSignup />
+            <ContentCard />
+            <ContentCard />
+            <h1>Welcome</h1>
+            <Footer />
         </div>
     )
 }

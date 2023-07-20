@@ -105,7 +105,7 @@ def questions():
     questions_dict = [question.to_dict(rules = ('-quiz', )) for question in questions]
     return make_response(questions_dict, 200)
 
-@app.route('/questions/<int:id>', methods = 'PATCH')
+@app.route('/questions/<int:id>', methods = ['PATCH'])
 def question_by_id(id):
     question = Question.query.filter(Question.id == id).first()
 

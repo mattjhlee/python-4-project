@@ -129,23 +129,23 @@ if __name__ == '__main__':
         # Seed code goes here!
 
 
-        # q_one = Question ( 
-        # prompt = "Valorant is a tactical FPS developed by _____", 
-        # correct_answer = "Riot Games",
-        # alt_1 = 'Valve', 
-        # alt_2 = 'Nintendo', 
-        # alt_3 = 'Square Enix',
-        # difficulty = 1,
-        # percentage_correct = 0 ,
-        # correct_count = 0,
-        # answer_count = 0,
-        # category = 'video games')
+        q_one = Question ( 
+        prompt = "Valorant is a tactical FPS developed by _____", 
+        correct_answer = "Riot Games",
+        alt_1 = 'Valve', 
+        alt_2 = 'Nintendo', 
+        alt_3 = 'Square Enix',
+        difficulty = 1,
+        percentage_correct = 0 ,
+        correct_count = 0,
+        answer_count = 0,
+        category = 'video games')
         
 
-        # db.session.add(q_one)
+        db.session.add(q_one)
 
-        r_test = Result(score=2.0, user_id = 1, quiz_id = 1)
-        db.session.add(r_test)
+        # r_test = Result(score=2.0, user_id = 1, quiz_id = 1)
+        # db.session.add(r_test)
         db.session.commit()
 
 
