@@ -13,8 +13,20 @@ function QuestionForm( {onQuestionFormSubmit} ) {
     const [ category, setCategory ] = useState("")
     // const [ quizId, setQuizId ] = useState("")
 
-    function handleSubmit(e){
+    const[quizes,setQuizes] = useState([])
+    //grab all the quizzes
+    useEffect( () =>{
+        fetch('/quizzes')
+        .then((resp) => resp.json())
+        .then(data => setQuizes(data))
+    },[])
+
+    function handleSubmit(e, quizes){
         e.preventDefault()
+
+        correctQuiz = quizes.filter((quiz) => {
+            return quiz.category == category
+        })
         
         if (prompt.length > 0
         && correctAnswer.length > 0
@@ -33,11 +45,11 @@ function QuestionForm( {onQuestionFormSubmit} ) {
                 correct_count: 0,
                 answer_count: 0,
                 category: category,
-                quiz_id: category
+                quiz_id: correctQuiz.id
                 //quiz_id will be the quiz that has the same category
             }
 
-            fetch("http://127.0.0.1:5555/questions", {
+            fetch("/questions", {
                 method: "POST",
                 headers: {
                     "Accept": "application/json",
