@@ -19,7 +19,7 @@ function Quizes_landing_page(){
     //grab all the quizzes
     useEffect( () =>{
         fetch("linktoquiztabledata")
-        .then((resp => resp.json()))
+        .then((resp) => resp.json())
         .then(data => setQuizes(data))
     },[])
 
@@ -27,7 +27,7 @@ function Quizes_landing_page(){
     const [filterBy,setFilterBy] = useState("")
     
     //get the list of filtered quizzes
-    filteredQuizList = quizes.filter((quiz) => {
+    let filteredQuizList = quizes.filter((quiz) => {
         return (quiz.category === filterBy)
     })
 

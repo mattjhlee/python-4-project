@@ -5,16 +5,18 @@ import ContentCard from "./Content_Card"
 
 //import dependencies 
 
-function Home_Page(){
+function Home_Page({}){
 
     return(
         <div>
+            <h4>idt this is working</h4>
             <NavBar />
             <LoginSignup />
-            <ContentCard />
-            <ContentCard />
             <h1>Welcome</h1>
-            <Footer />
+            <ContentCard />
+            <ContentCard />
+            
+            {/* <Footer /> */}
         </div>
     )
 }

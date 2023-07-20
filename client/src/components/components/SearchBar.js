@@ -13,3 +13,5 @@ function SearchBar({setFilter}){ //will need a way to set the filter always
 
         </form>
     )}
+
+export default SearchBar

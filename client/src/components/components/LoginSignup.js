@@ -10,3 +10,5 @@ function loginSignup(){
 
     )
 }
+
+export default loginSignup
