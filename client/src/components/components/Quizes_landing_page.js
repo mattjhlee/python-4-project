@@ -2,37 +2,49 @@ import React, {useEffect, useState}  from "react";
 import ContentCard from "./Content_Card";
 import QuizSelect from "./QuizSelect";
 import SearchBar from "./SearchBar";
+import NavBar from "./NavBar";
 
 
 //import dependencies 
 
 function Quizes_landing_page(){
 
-    const[quizes,setQuizes] = useState([])
+    //when you go to the quiz page it shows the nav bar on top
+    //Some Text saying what it is and how to browse and what is popular
+    //Has a Search Bar to type into 
+    //Depending on what is typed into for the category we filter the quizzes
+    //If none found here are some recommended quizzes
 
+    const[quizes,setQuizes] = useState([])
+    //grab all the quizzes
     useEffect( () =>{
         fetch("linktoquiztabledata")
         .then((resp => resp.json()))
         .then(data => setQuizes(data))
     },[])
 
-
-
+    //state for filter
     const [filterBy,setFilterBy] = useState("")
     
+    //get the list of filtered quizzes
     filteredQuizList = quizes.filter((quiz) => {
         return (quiz.category === filterBy)
     })
 
-    let displayQuiz = filteredQuizList.map( (placeholder) => {
-        return <QuizSelect key= {placeholder.id}
-        name = {placeholder.name}
-        difficulty = {placeholder.difficulty}
+    //function to display the filtered quizes
+    let displayQuiz = filteredQuizList.map( (quizToDisplay) => {
+        return <QuizSelect key= {quizToDisplay.id}
+        name = {quizToDisplay.name}
+        difficulty = {quizToDisplay.difficulty}
+        category={quizToDisplay.category}
         />
     })
 
+
+
     return(
         <div>
+            <NavBar />
             <h1>Testing Quiz Page</h1>
 
             <div className="categoryBrowse">
