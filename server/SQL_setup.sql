@@ -12,5 +12,16 @@ INSERT INTO QUESTIONS (id, prompt, correct_answer, alt_1,alt_2,alt_3,difficulty,
 
 INSERT INTO QUESTIONS (id, prompt, correct_answer, alt_1,alt_2,alt_3,difficulty,percentage_correct,category) VALUES (5, "Haggis is a ____ dish traditionally made from teh stomach of an animal", "Scottish", "Turkish", "Moroccan","Swiss",4,0,"food");
 
+INSERT INTO Quizzes (id, name, category, created_by, created_at) VALUES (1, "JSPython" , "programming",1,1);
+INSERT INTO Quizzes (id, name, category, created_by, created_at) VALUES (2, "Cohort Trivia" , "trivia",1,1);
+INSERT INTO Quizzes (id, name, category, created_by, created_at) VALUES (3, "PC Games" , "video games",1,1);
+INSERT INTO Quizzes (id, name, category, created_by, created_at) VALUES (4, "Sports Quiz" , "sports",1,1);
+INSERT INTO Quizzes (id, name, category, created_by, created_at) VALUES (5, "Foodie Quiz" , "food",1,1);
 
-DELETE FROM QUESTIONS WHERE ID = 1
+INSERT INTO Users (username) VALUES ('Default');
+INSERT INTO Users (username) VALUES ('Matthew');
+INSERT INTO Users (username) VALUES ('Shams');
+
+
+
+DELETE FROM Users WHERE id =4;

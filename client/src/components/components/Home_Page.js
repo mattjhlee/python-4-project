@@ -1,14 +1,24 @@
 import React from "react";
+import NavBar from "./NavBar";
+import LoginSignup from "./LoginSignup"
+import ContentCard from "./Content_Card"
 
 //import dependencies 
 
-function Home_Page(){
+function HomePage(){
 
     return(
         <div>
-            <h1>Testing</h1>
+            <NavBar />
+            <LoginSignup />
+            <h1>Welcome to your new Study Helper (totally not a quizlet rippoff)</h1>
+            <h1> </h1>
+            <ContentCard />
+
+            
+            {/* <Footer /> */}
         </div>
     )
 }
 
-export default Home_Page
+export default HomePage
