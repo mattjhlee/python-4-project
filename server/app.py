@@ -177,11 +177,41 @@ def question_by_id(id):
             
         return response
 
-@app.route('/users', methods = ['GET'])
+@app.route('/users', methods = ['GET', 'POST'])
 def users():
-    users = User.query.all()
-    users_dict = [user.to_dict(rules = ('-results', )) for user in users]
-    return make_response(users_dict, 200)
+    if request.method == 'GET':
+        users = User.query.all()
+        users_dict = [user.to_dict(rules = ('-results', )) for user in users]
+        return make_response(users_dict, 200)
+    
+    elif request.method == 'POST':
+        data = request.get_json()
+
+        try:
+
+            new_user = User(
+                username = data['username'],
+                created_at = data['created_at']
+            )
+
+            db.session.add(new_user)
+
+            db.session.commit()
+
+            response = make_response(
+                jsonify(new_user.to_dict()),
+                201
+            )
+
+        except ValueError:
+
+            response = make_response(
+                { "errors": ["validation errors"] },
+                400
+            )
+
+        return response
+    
 
 @app.route('/results', methods = ['GET', 'POST'])
 def results():

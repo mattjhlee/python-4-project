@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import React from "react"
 
-function QuestionForm( {onQuestionFormSubmit} ) {
+function QuestionForm( {} ) {
     const [ prompt, setPrompt ] = useState("")
     const [ correctAnswer, setCorrectAnswer ] = useState("")
     const [ alt1, setAlt1 ] = useState("")
@@ -60,7 +60,6 @@ function QuestionForm( {onQuestionFormSubmit} ) {
                 body: JSON.stringify(newQuestion)
             })
                 .then(resp => resp.json())
-                .then(newQuestion => onQuestionFormSubmit(newQuestion))
 
                 setAlt1('')
                 setAlt2('')
