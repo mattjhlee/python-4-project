@@ -7,10 +7,13 @@ function LoginSignup({user, users, setUser, setUsers}) {
     const [displayAll, setDisplayAll] = useState(true)
     const [displayButtL, setDisplayButtL] = useState(true)
     const [displayButtS, setDisplayButtS] = useState(true)
-    const [usernames, setUsernames] = useState([])
+    // const [usernames, setUsernames] = useState([])
     
-    console.log(users)
+    let usernames = []
 
+    users.forEach((user) => {
+        usernames = [...usernames, user.username]
+    })
     
     function handleClickL(e){
         e.preventDefault()
