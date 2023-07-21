@@ -20,7 +20,10 @@ function App() {
   useEffect( () => {
     fetch('/users')
     .then ((resp) => resp.json())
-    .then ((data) =>setUsers(data))
+    .then ((data) => {
+      setUsers(data)
+      
+    })
   },[])
 
 
