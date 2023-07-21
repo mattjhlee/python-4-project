@@ -92,7 +92,7 @@ function QuestionForm( {} ) {
             <input type="text" name="alt2" value={alt2} onChange={(e) => setAlt2(e.target.value)} /> <br />
             <label for="alt3">Incorrect Option: </label>
             <input type="text" name="alt3" value={alt3} onChange={(e) => setAlt3(e.target.value)} /> <br />
-            <label for="difficulty">Difficulty Level (1-3): </label>
+            <label for="difficulty">Difficulty Level (1-4): </label>
             <input type="text" name="difficulty" value={difficulty} onChange={(e) => setDifficulty(e.target.value)} /> <br />
             <label for="category">Question Category: </label>
             <input type="text" name="category" value={category} onChange={(e) => setCategory(e.target.value)} /> <br />
