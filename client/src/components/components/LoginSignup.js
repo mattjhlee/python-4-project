@@ -20,7 +20,11 @@ function LoginSignup({user, users, setUser, setUsers}) {
         
         console.log(usernames)
         if (usernames.includes(userLogged)) {
-            setUser(userLogged)
+            const fullUser = users.filter((user) => {
+                return (user.username == userLogged)
+            })
+            setUser(fullUser)
+            console.log(user)
         } else {
             alert("Invalid username. Try again, sign up for an account, or continue as a guest.")
             setDisplayButtS(true)
