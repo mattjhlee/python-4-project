@@ -18,7 +18,7 @@ function Quiz({category}){
     //find out which questions are associated with that quiz
 
     let filteredQuestions = questions.filter((question) => {
-        return (question.category === category)}
+        return (question.category.toLowerCase() === category.toLowerCase())}
     )
     
     //function to create each question block
