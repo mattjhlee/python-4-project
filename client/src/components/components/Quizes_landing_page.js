@@ -46,7 +46,6 @@ function QuizPage(){
         return <QuizSelect key= {quiz.id}
         name = {quiz.name}
         category={quiz.category}
-
         />
     })
 

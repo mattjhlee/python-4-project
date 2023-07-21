@@ -27,3 +27,5 @@ INSERT INTO Users (username) VALUES ('Shams');
 DELETE FROM Users WHERE id =4;
 
 DELETE FROM QUESTIONS WHERE id=5;
+
+INSERT INTO Results (score, user_id, quiz_id) VALUES (35.0, 6, 2);

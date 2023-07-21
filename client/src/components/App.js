@@ -14,7 +14,7 @@ function App() {
 
   //could load up all the quizes and questions here to test
   //basically dump the entire database on start into different arrays
-  const[user,setUser] = useState('Default')
+  const[user,setUser] = useState()
   const[users, setUsers] = useState([])
 
   useEffect( () => {
@@ -22,6 +22,7 @@ function App() {
     .then ((resp) => resp.json())
     .then ((data) => {
       setUsers(data)
+      setUser(data[0])
     })
   },[])
 

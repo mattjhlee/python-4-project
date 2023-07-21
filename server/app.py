@@ -212,6 +212,26 @@ def users():
 
         return response
     
+@app.route('/users/<int:id>', methods=['DELETE'])
+def user_by_id(id):
+    
+    user = User.query.filter(User.id == id).first()
+
+    if user:
+
+        db.session.delete(user)
+        db.session.commit()
+                
+        response = make_response({}, 204)
+    
+    else:
+        response = make_response(
+        { "error": "Quiz not found" },
+        404
+        )
+        
+    return response
+    
 
 @app.route('/results', methods = ['GET', 'POST'])
 def results():

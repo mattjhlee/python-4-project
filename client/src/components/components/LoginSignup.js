@@ -10,12 +10,18 @@ function LoginSignup({user, users, setUser, setUsers}) {
     const [userSignedUp, setUserSignedUp] = useState('')
     const [displayW, setDisplayW] = useState(false)
     const [username, setUsername] = useState('')
+
+    // if (user.username != 'Default') {
+    //     setDisplayAll(false)
+    // }
     
     let usernames = []
 
     users.forEach((user) => {
         usernames = [...usernames, user.username]
     })
+
+
     
     function handleClickL(e){
         e.preventDefault()
@@ -25,8 +31,9 @@ function LoginSignup({user, users, setUser, setUsers}) {
             const fullUser = users.filter((user) => {
                 return (user.username == userLogged)
             })
-            setUser(fullUser)
+            setUser(fullUser[0])
             setUsername(userLogged)
+            setDisplayAll(false)
             setDisplayW(true)
         } else {
             alert("Invalid username. Try again, sign up for an account, or continue as a guest.")
@@ -76,7 +83,7 @@ function LoginSignup({user, users, setUser, setUsers}) {
                 const fullUser = users.filter((user) => {
                     return (user.username == userSignedUp)
                 })
-                setUser(fullUser)
+                setUser(fullUser[0])
                 setUsername(userSignedUp)
                 setDisplayW(true)
         }
