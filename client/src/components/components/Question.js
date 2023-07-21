@@ -47,6 +47,7 @@ function Question({id, prompt, c_ans, alt_1,alt_2,alt_3,diff}) {
                     <input type="checkbox" onClick={handleClick}>{answers[3]}</input>
                 </div>
             <h4>Difficulty: {diff}</h4>
+            <button onClick={handleConfirm} className="conf-asnwer">Confirm</button>
         </div>
             <h4>Difficulty: {diff}</h4>
             <button onClick={handleConfirm} className="conf-asnwer">Confirm</button>

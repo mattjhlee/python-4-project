@@ -6,7 +6,6 @@ import StatsPage from "./components/Stats_page"
 import UserPage from "./components/User_page"
 import QuestionForm from "./components/QuestionForm";
 
-
 //No index over the app? might just have to make not included in template?
 
 
