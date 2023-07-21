@@ -2,7 +2,7 @@ import React from "react";
 
 //import dependencies 
 
-function UserPage(){
+function UserPage({user, users, setUser, setUsers}){
 
     return(
         <div>

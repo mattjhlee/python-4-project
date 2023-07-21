@@ -142,34 +142,40 @@ def questions():
 
         return response
 
-@app.route('/questions/<int:id>', methods = ['PATCH'])
+@app.route('/questions/<int:id>', methods = ['PATCH', 'GET'])
 def question_by_id(id):
     question = Question.query.filter(Question.id == id).first()
 
     if question:
-        data = request.get_json()
+        if request.method == 'PATCH':
+            data = request.get_json()
 
-        try:
+            try:
 
-            for key in data:
-                setattr(question, key, data[key])
+                for key in data:
+                    setattr(question, key, data[key])
 
-            db.session.add(question)
+                db.session.add(question)
 
-            db.session.commit()
+                db.session.commit()
 
-            response = make_response(
-                jsonify(question.to_dict(rules = ('-quiz', ))),
-                202
-                )
+                response = make_response(
+                    jsonify(question.to_dict(rules = ('-quiz', ))),
+                    202
+                    )
 
-        except ValueError:
+            except ValueError:
 
-            response = make_response(
-                { "errors": ["validation errors"] },
-                400
-                )
-    return response
+                response = make_response(
+                    { "errors": ["validation errors"] },
+                    400
+                    )
+                
+        elif request.method == 'GET':
+            question_dict = question.to_dict()
+            response = make_response(question_dict, 200)
+            
+        return response
 
 @app.route('/users', methods = ['GET'])
 def users():
