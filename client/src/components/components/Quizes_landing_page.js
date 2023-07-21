@@ -56,19 +56,22 @@ function QuizPage(){
     return(
         <div>
             <NavBar />
-            <h1>Testing Quiz Page</h1>
+            <h1 className="main-header" >View Quizzes</h1>
 
             <div className="categoryBrowse">
-                <h3> Browse by Category</h3>
+                <h3> Browse by Category</h3><br></br>
                 <ul>
-                    <h4>Popular Categories</h4>
-                    <li className="quiz-cat">Sports</li>
-                    <li className="quiz-cat">Programming</li>
+                    <h4>Popular Categories</h4> <br></br>
+                    <li className="quiz-cat">Sports</li> <br></br>
+                    <li className="quiz-cat">Programming</li> <br></br>
                 </ul>
+
+                <h3>Search by Category</h3>
                 <SearchBar setFilter = {setFilterBy}/>
             </div>
             
-            <h4>List of Available Quizes</h4>
+            <h4 className="quizheader">List of Available Quizzes</h4>
+
             <div>
                 {renderQuiz}
             </div>

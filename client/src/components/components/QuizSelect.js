@@ -15,13 +15,21 @@ function QuizSelect({name, category}){
    
     return(
     
-    <div>
-        <h3>{name}</h3>
-        <h3>{category}</h3>
-        <button onClick={handleClick}>Start Quiz</button>
+    <div className="quiz-item">
+        <span> 
+            <h3>{name}</h3>
+        </span>
+        <span>
+            <h3>{category}</h3>
+        </span>
+        <span>
+            <button onClick={handleClick}>Start Quiz</button>
+        </span>
+        <br></br>
         <div>
-            {start ? <Quiz category={category} />  : 'not started'}
+            {start ? <Quiz category={category} />  : null}
         </div>
+    
     </div>
     )
 }

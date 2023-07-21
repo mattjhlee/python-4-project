@@ -11,9 +11,8 @@ function HomePage({user, users, setUser, setUsers}){
         <div>
             <NavBar />
             <LoginSignup user={user} setUser={setUser} users={users} setUsesr={setUsers}/>
-            <h1>Welcome to your new Study Helper (totally not a quizlet rippoff)</h1>
+            <h1 className="main-header" >Welcome to your new Study Helper (totally not a quizlet rippoff)</h1>
             <h1> </h1>
-            <ContentCard />
 
             
             {/* <Footer /> */}

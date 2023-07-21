@@ -22,6 +22,7 @@ function App() {
     .then ((resp) => resp.json())
     .then ((data) => {
       setUsers(data)
+      setUser(data[0])
     })
   },[])
 

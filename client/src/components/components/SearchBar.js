@@ -9,7 +9,7 @@ function SearchBar({setFilter}){ //will need a way to set the filter always
     return(
          <form onSubmit={handleSubmit} className="search-bar">
             <input onChange ={handleChange} type="text" placeholder="Search..." />
-            <button type="submit">placeholder</button>
+            <button type="submit">Search</button>
 
         </form>
     )}

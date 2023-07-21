@@ -10,3 +10,6 @@ INSERT INTO QUESTIONS (id, prompt, correct_answer, alt_1,alt_2,alt_3,difficulty,
 
 
 
+INSERT INTO Results (score, user_id, quiz_id) VALUES (50.0, 6, 2);
+INSERT INTO Results (score, user_id, quiz_id) VALUES (90.0, 6, 2);
+INSERT INTO Results (score, user_id, quiz_id) VALUES (35.0, 6, 2);

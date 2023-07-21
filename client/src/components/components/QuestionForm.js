@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react"
 import React from "react"
+import NavBar from "./NavBar"
 
-function QuestionForm( {onQuestionFormSubmit} ) {
+function QuestionForm( {} ) {
     const [ prompt, setPrompt ] = useState("")
     const [ correctAnswer, setCorrectAnswer ] = useState("")
     const [ alt1, setAlt1 ] = useState("")
@@ -60,7 +61,6 @@ function QuestionForm( {onQuestionFormSubmit} ) {
                 body: JSON.stringify(newQuestion)
             })
                 .then(resp => resp.json())
-                .then(newQuestion => onQuestionFormSubmit(newQuestion))
 
                 setAlt1('')
                 setAlt2('')
@@ -82,23 +82,29 @@ function QuestionForm( {onQuestionFormSubmit} ) {
     }       
 
     return(
-        <form id = "question-form" onSubmit={handleSubmit}>
-            <label for="prompt">Question Prompt: </label>
-            <input type="text" name="prompt" value={prompt} onChange={(e) => setPrompt(e.target.value)} /> <br /> 
-            <label for="correctAnswer">Correct Answer: </label>
-            <input type="text" name="correctAnswer" value={correctAnswer} onChange={(e) => setCorrectAnswer(e.target.value)} /> <br />
-            <label for="alt1">Incorrect Option: </label>
-            <input type="text" name="alt1" value={alt1} onChange={(e) => setAlt1(e.target.value)} /> <br />
-            <label for="alt2">Incorrect Option: </label>
-            <input type="text" name="alt2" value={alt2} onChange={(e) => setAlt2(e.target.value)} /> <br />
-            <label for="alt3">Incorrect Option: </label>
-            <input type="text" name="alt3" value={alt3} onChange={(e) => setAlt3(e.target.value)} /> <br />
-            <label for="difficulty">Difficulty Level (1-4): </label>
-            <input type="text" name="difficulty" value={difficulty} onChange={(e) => setDifficulty(e.target.value)} /> <br />
-            <label for="category">Question Category: </label>
-            <input type="text" name="category" value={category} onChange={(e) => setCategory(e.target.value)} /> <br />
-            <button type="submit">Submit</button>
-        </form>
+        <div>
+            <NavBar />
+
+            <h3 className="main-header">Add a Question!</h3>
+
+            <form id = "question-form" onSubmit={handleSubmit}>
+                <label for="prompt">Question Prompt: </label>
+                <input type="text" name="prompt" value={prompt} onChange={(e) => setPrompt(e.target.value)} /> <br /> 
+                <label for="correctAnswer">Correct Answer: </label>
+                <input type="text" name="correctAnswer" value={correctAnswer} onChange={(e) => setCorrectAnswer(e.target.value)} /> <br />
+                <label for="alt1">Incorrect Option: </label>
+                <input type="text" name="alt1" value={alt1} onChange={(e) => setAlt1(e.target.value)} /> <br />
+                <label for="alt2">Incorrect Option: </label>
+                <input type="text" name="alt2" value={alt2} onChange={(e) => setAlt2(e.target.value)} /> <br />
+                <label for="alt3">Incorrect Option: </label>
+                <input type="text" name="alt3" value={alt3} onChange={(e) => setAlt3(e.target.value)} /> <br />
+                <label for="difficulty">Difficulty Level (1-4): </label>
+                <input type="text" name="difficulty" value={difficulty} onChange={(e) => setDifficulty(e.target.value)} /> <br />
+                <label for="category">Question Category: </label>
+                <input type="text" name="category" value={category} onChange={(e) => setCategory(e.target.value)} /> <br />
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     )
 
 }
