@@ -2,7 +2,7 @@ import React, {useEffect, useState}  from "react";
 import Question from "./Question";
 
 
-function Quiz({id}){
+function Quiz({category}){
     //we load up all the questions
     //filter out the questions that are present on the quiz
     //For each question we run it thourgh the quiz card
@@ -17,8 +17,8 @@ function Quiz({id}){
 
     //find out which questions are associated with that quiz
 
-    filteredQuestions = questions.filter((question) => {
-        return (question.difficulty === 2)}
+    let filteredQuestions = questions.filter((question) => {
+        return (question.category === category)}
     )
     
     //function to create each question block
@@ -42,5 +42,6 @@ function Quiz({id}){
         </div>
     )
 }
+
 
 export default Quiz

@@ -18,7 +18,7 @@ function QuizPage(){
     const[quizes,setQuizes] = useState([])
     //grab all the quizzes
     useEffect( () =>{
-        fetch('http://localhost:5555/quizzes')
+        fetch('/quizzes')
         .then((resp) => resp.json())
         .then(data => setQuizes(data))
     },[])
@@ -33,30 +33,35 @@ function QuizPage(){
     // })
 
 
-    console.log(quizes)
+    console.log(quizes) //Quizzes is an array of objects
+    // console.log(quizes[0]) //this should be the first object in the array
+    // console.log(quizes[0].id) //this should show the 
+  
 
     //function to display the filtered quizes
 
-    let displayQuiz = quizes.map( (quizToDisplay) => {
-        return <QuizSelect key= {quizToDisplay.id}
-        name = {quizToDisplay.name}
-        difficulty = {quizToDisplay.difficulty}
-        category={quizToDisplay.category}
+    //We take each object in the array. For each one we create a quizSelect component with the following props
+
+    let renderQuiz = quizes.map( (quiz) => {
+        return <QuizSelect key= {quiz.id}
+        name = {quiz.name}
+        category={quiz.category}
+
         />
     })
 
-
+    console.log('hello')
+    console.log(renderQuiz) //this is a list of react components with props we need
 
     return(
         <div>
             <NavBar />
             <h1>Testing Quiz Page</h1>
-            <p>{quizes}</p>
 
             <div className="categoryBrowse">
                 <h3> Browse by Category</h3>
                 <ul>
-                    <h4>Popular Quizes</h4>
+                    <h4>Popular Categories</h4>
                     <li className="quiz-cat">Sports</li>
                     <li className="quiz-cat">Programming</li>
                 </ul>
@@ -65,7 +70,7 @@ function QuizPage(){
             
             <h4>List of Available Quizes</h4>
             <div>
-                {displayQuiz}
+                {renderQuiz}
             </div>
 
             <></>

@@ -21,12 +21,14 @@ function QuestionForm( {onQuestionFormSubmit} ) {
         .then(data => setQuizes(data))
     },[])
 
-    function handleSubmit(e, quizes){
+    function handleSubmit(e){
         e.preventDefault()
-
-        correctQuiz = quizes.filter((quiz) => {
+        console.log(quizes)
+        const correctQuiz = quizes.filter((quiz) => {
             return quiz.category == category
         })
+
+        console.log(correctQuiz)
         
         if (prompt.length > 0
         && correctAnswer.length > 0
@@ -41,11 +43,11 @@ function QuestionForm( {onQuestionFormSubmit} ) {
                 alt_1: alt1,
                 alt_2: alt2,
                 alt_3: alt3,
-                difficulty: difficulty,
+                difficulty: parseInt(difficulty),
                 correct_count: 0,
                 answer_count: 0,
                 category: category,
-                quiz_id: correctQuiz.id
+                quiz_id: correctQuiz[0].id
                 //quiz_id will be the quiz that has the same category
             }
 

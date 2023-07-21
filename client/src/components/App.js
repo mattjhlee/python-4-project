@@ -4,7 +4,7 @@ import HomePage from "./components/Home_Page" //Can i import all from just compo
 import QuizPage from "./components/Quizes_landing_page"
 import StatsPage from "./components/Stats_page" 
 import UserPage from "./components/User_page"
-import NewQuesForm from "./components/New_Ques_Form"
+import QuestionForm from "./components/QuestionForm";
 
 
 //No index over the app? might just have to make not included in template?
@@ -28,7 +28,7 @@ function App() {
           <Route path = '/Quizzes' element = {<QuizPage/>} />
           <Route path = '/Stats' element = {<StatsPage/>}/>
           <Route path = '/User' element = {<UserPage />}/>
-          <Route path = '/NewQuestion' element = {<NewQuesForm />} />
+          <Route path = '/NewQuestion' element = {<QuestionForm />} />
         </Routes>
       </BrowserRouter>
     </div>
