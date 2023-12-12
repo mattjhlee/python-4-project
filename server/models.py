@@ -50,7 +50,7 @@ class Question(db.Model, SerializerMixin):
     
     #serializer rules
 
-    serialize_rules = ("-quiz_id")   #If I want a question do I care to return what quiz it is on? in my head idt i care.
+    serialize_rules = ("-quiz_id",)   #If I want a question do I care to return what quiz it is on? in my head idt i care.
     
 
 
@@ -119,7 +119,7 @@ class Result(db.Model, SerializerMixin):
     quiz_id = db.Column(db.Integer, db.ForeignKey('quizzes.id'))
 
     #serializer Rules
-    serialize_rules = ('-user.results','-quiz.results')
+    serialize_rules = ('-user.results','-quiz.results', )
 
     #validations
     

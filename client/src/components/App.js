@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home_page from "./components/Home_Page" //Can i import all from just componenets folder 
-import Quizes_landing_page from "./components/Quizes_landing_page"
-import Stats_page from "./components/Stats_page" 
-import User_page from "./components/User_page"
+import HomePage from "./components/Home_Page" //Can i import all from just componenets folder 
+import QuizPage from "./components/Quizes_landing_page"
+import StatsPage from "./components/Stats_page" 
+import UserPage from "./components/User_page"
+import QuestionForm from "./components/QuestionForm";
 
 //No index over the app? might just have to make not included in template?
 
@@ -11,17 +12,33 @@ import User_page from "./components/User_page"
 function App() {
   // Code goes here!
 
+  //could load up all the quizes and questions here to test
+  //basically dump the entire database on start into different arrays
+  const[user,setUser] = useState('Default')
+  const[users, setUsers] = useState([])
+
+  useEffect( () => {
+    fetch('/users')
+    .then ((resp) => resp.json())
+    .then ((data) => {
+      setUsers(data)
+      setUser(data[0])
+    })
+  },[])
+
 
   //Route setup
 
   return (
     <div className='App'>
+      {/* <Home_Page /> */}
       <BrowserRouter>
         <Routes>
-          <Route path = '/' element = {Home_page}/>
-          <Route path = '/Quizzes' element = {Quizes_landing_page} />
-          <Route path = '/Stats' element = {Stats_page}/>
-          <Route path = 'User' element = {User_page}/>
+          <Route path = '/' element = {<HomePage user={user} setUser={setUser} users={users} setUsesr={setUsers} />}/>
+          <Route path = '/Quizzes' element = {<QuizPage/>} />
+          <Route path = '/Stats' element = {<StatsPage/>}/>
+          <Route path = '/User' element = {<UserPage user={user} setUser={setUser} users={users} setUsesr={setUsers} />}/>
+          <Route path = '/NewQuestion' element = {<QuestionForm />} />
         </Routes>
       </BrowserRouter>
     </div>

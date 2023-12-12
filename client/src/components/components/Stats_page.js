@@ -1,14 +1,16 @@
 import React from "react";
+import NavBar from "./NavBar";
 
 //import dependencies 
 
-function Stats_Page(){
+function StatsPage(){
 
     return(
         <div>
-            <h1>Testing Stats</h1>
+            < NavBar />
+            <h1 className="main-header">Stats to Come....</h1>
         </div>
     )
 }
 
-export default Stats_Page
+export default StatsPage
